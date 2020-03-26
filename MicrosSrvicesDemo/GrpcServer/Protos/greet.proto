@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+package Greet;
+
+//1、定义接口名称
+service GrpcService{
+
+    //1,1 方法名
+	rpc	Student (RmRequest) returns (RmResponse);
+
+	// 1.2 方法流式响应
+	rpc	StudentServer (RmRequest) returns (stream RmResponse);
+}
+
+// 2、定义参数(类型===class)
+message RmRequest{
+	string Name = 1; // 第一个属性
+}
+
+// 3、定义返回值(类型===class)
+message RmResponse{
+	string message = 1; // 第一个属性
+}
